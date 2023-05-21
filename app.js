@@ -1,6 +1,12 @@
+/**
+	@Authored By Ajith Thazath  
+	Created for Demo project
+**/
 const path = require('path');
 const fs = require('fs');
 const https = require('https');
+
+require('dotenv').config({path: __dirname + '/.env'});
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -22,9 +28,10 @@ const User = require('./models/user');
 
 const MONGODB_URI = `mongodb+srv://${process.env.MONGO_USER}:${
   process.env.MONGO_PASSWORD
- }@cluster0-ntrwp.mongodb.net/${process.env.MONGO_DEFAULT_DATABASE}?retryWrites=true&w=majority`;
+}@cluster0.pom2gyy.mongodb.net/?retryWrites=true&w=majority`;
 
 const app = express();
+
 const store = new MongoDBStore({
   uri: MONGODB_URI,
   collection: 'sessions',
@@ -128,16 +135,17 @@ app.get('/500', errorController.get500);
 
 app.use(errorController.get404);
 
-// app.use((error, req, res, next) => {
-//   // res.status(error.httpStatusCode).render(...);
-//   // res.redirect('/500');
-//   res.status(500).render('500', {
-//     pageTitle: 'Error!',
-//     path: '/500',
-//     isAuthenticated: req.session.isLoggedIn
-//   });
-// });
+app.use((error, req, res, next) => {
+  // res.status(error.httpStatusCode).render(...);
+  // res.redirect('/500');
+  res.status(500).render('500', {
+    pageTitle: 'Error!',
+    path: '/500',
+    isAuthenticated: req.session.isLoggedIn
+  });
+});
 
+console.log('mongo url',MONGODB_URI )
 mongoose
   .connect(MONGODB_URI, { useNewUrlParser: true })
   .then(result => {

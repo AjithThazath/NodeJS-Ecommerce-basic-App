@@ -1,5 +1,8 @@
+/**
+	@Authored By Ajith Thazath  
+	Created for Demo project
+**/
 const deleteProduct = btn => {
-  console.log('btn,,',btn);
   const prodId = btn.parentNode.querySelector('[name=productId]').value;
   const csrf = btn.parentNode.querySelector('[name=_csrf]').value;
   const productElement = btn.closest('article');

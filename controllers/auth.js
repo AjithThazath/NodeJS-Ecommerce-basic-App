@@ -1,3 +1,7 @@
+/**
+	@Authored By Ajith Thazath  
+	Created for Demo project
+**/
 const crypto = require('crypto');
 
 const bcrypt = require('bcryptjs');
@@ -14,8 +18,8 @@ let transporter = nodemailer.createTransport({
   port: 587,
   secure: false, 
   auth: {
-    user: "" // gmail use account, 
-    pass: ""// app password, 
+    user:process.env.EMAIL_USER, // gmail use account, 
+    pass: process.env.MONGO_USER_PASSOWRD// app password, 
   },
 });
 

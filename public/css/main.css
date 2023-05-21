@@ -1,3 +1,7 @@
+/**
+	@Authored By Ajith Thazath  
+	Created for Demo project
+**/
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
 
 * {
@@ -38,6 +42,7 @@ form {
   padding: 0 1.5rem;
   display: flex;
   align-items: center;
+  font-weight:bolder;
 }
 
 .main-header__nav {

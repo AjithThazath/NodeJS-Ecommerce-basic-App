@@ -1,3 +1,7 @@
+/**
+	@Authored By Ajith Thazath  
+	Created for Demo project
+**/
 const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
